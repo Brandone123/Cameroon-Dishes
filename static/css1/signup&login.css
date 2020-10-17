@@ -1,0 +1,92 @@
+.signup-page, .login-page {
+    width: 500px;
+    margin: auto;
+    padding-top: 55px;
+}
+
+.hiredev {
+    font-family: 'Roboto', sans-serif;
+}
+
+.rmvline {
+    text-decoration: none;
+    color: #ffc107;
+}
+
+.form_signup, .form_login {
+    position: relative;
+    z-index: 1;
+    background: #e2dcd5;
+    border-radius: 8px;
+    max-width: 440px;
+    margin: 0 auto 100px;
+    padding: 25px;
+    padding-top: 11px;
+}
+
+.space {
+padding-bottom: 215px;
+}
+
+.center_title {
+    color: black;
+    text-align: center;
+    font-family: ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 35px;
+    line-height: 20px;
+}
+
+input {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    outline: 1;
+    background: #f2f2f2;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+   -moz-box-shadow: 0px 5px 5px 1px #f7ea3a;
+   -webkit-box-shadow: 0px 5px 5px 1px #f7ea3a;
+   box-shadow: 5px 5px 1px #f7ea3a;
+    margin: 0 0 15px;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+    float: right;
+}
+
+.create_ac{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    outline: 0;
+    background: #de6c09;
+    width: 150px;
+    height: 40px;
+    border: 0%;
+    border-radius: 5px;
+    
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.message_login {
+    padding-top: 20px;
+    margin: 15px 0 0;
+    color: black;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.link_login {
+    color: #ffc107;
+    text-decoration: none;
+}
+.forgotpsw{
+  position: absolute;
+  
+  padding-top: 0px;
+  margin: 20px 0 0;
+    color: black;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+  }
