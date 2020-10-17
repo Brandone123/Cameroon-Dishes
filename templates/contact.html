@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="hero-background">
+  <div id="#home" class="cont-bg">
+    <div class="overlay1">
+      <h1 class="hero-text">
+        <span class="message">Contact Us</span>
+      </h1>
+    </div>
+  </div>
+</div>
+
+<main id="contact">
+  <div id="contact-heading">
+    <header>
+      <h1 style="color: black;">Get in touch</h1>
+    </header>
+    <hr />
+    <p>
+      You can reach our customer support team by completing the form
+      below.<br />
+      You can still take some time to go through the
+      <strong><a href="{% url 'faq' %}">Frequently Asked Questions</a></strong>
+      page to find out more.
+    </p>
+  </div>
+
+  <div>
+    <section id="contact-form">
+      <form method="post" action="{% url 'contact' %}">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Name" />
+        <input type="email" name="email" placeholder="Email Address" />
+        <textarea name="message1" placeholder="Message"></textarea>
+        <button type="submit" class="">Send</button>
+      </form>
+    </section>
+    <section id="contact-address">
+      <section>
+        <header>
+          <h2>Office Address</h2>
+        </header>
+        <article>
+          <p>6, Bini Avenue,</p>
+          <p>Packem 454,</p>
+          <p>Dang, Ngaoundere</p>
+        </article>
+      </section>
+
+      <section>
+        <header>
+          <h2>Useful Links</h2>
+        </header>
+        <article>
+          <span>
+            <a href="https://twitter.com/Oslodiner"><img
+                src="https://res.cloudinary.com/dluyx2qsq/image/upload/v1567529735/icons8-twitter-32.png"
+                alt="twitter icon"></a>
+          </span>
+          <span>
+            <a href="https://m.youtube.com/watch?rel=0&v=hAPqHrB_FOg"><img
+                src="https://res.cloudinary.com/dluyx2qsq/image/upload/v1567529657/icons8-youtube-30.png"
+                alt="Youtube icon"></a>
+          </span>
+          <span><a href="https://lucid.blog/teamoslohng"><img
+                src="https://res.cloudinary.com/dluyx2qsq/image/upload/c_scale,w_32/v1567530172/icons8-ball-point-pen-64.png"
+                alt="pen icon"></a></span>
+        </article>
+      </section>
+    </section>
+  </div>
+</main>
+{% endblock content %}

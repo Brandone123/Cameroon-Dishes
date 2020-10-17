@@ -1,0 +1,88 @@
+{% load cart_template_tags %}
+
+<header>
+
+    <div class="topnav" id="myTopnav">
+        <div class="navigation">
+            <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+            <label for="navi-toggle" class="navigation__button">
+                <span class="navigation__icon">&nbsp;</span>
+            </label>
+            <div class="navigation__background">&nbsp;</div>
+            <nav class="navigation__nav">
+          <ul class="navigation__list">
+            <li class="navigation__item">
+              <a href="/" class="navigation__link">Home</a>
+            </li>
+            <li class="navigation__item">
+              <a href="{% url 'about' %}" class="navigation__link">About Us</a>
+            </li>
+            <li class="navigation__item">
+            <a href="{% url 'contact' %}" class="navigation__link">Contact Us</a> 
+            </li>
+            {% if request.user.is_authenticated %}
+            <li class="navigation__item"> 
+                <a href="{% url 'account_logout' %}" class="navigation__link">
+                    <i class="fas fa-logout"></i> Logout
+                </a>
+            </li>
+            <li class="navigation__item">   
+                <a href="{% url 'order-summary' %}" class="navigation__link waves-effect">
+                    <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+                </a>
+            </li>
+            <li class="navigation__item">
+                <a href="" class="navigation__link">
+                    <span class="badge green z-depth-1 mr-1 p-2"> {{ user.username }}
+                    </span>
+                </a>
+            </li>
+            {% else %}
+            <li class="navigation__item"> 
+                <a href="{% url 'account_signup' %}" class="navigation__link">
+                    <i class="fas fa-signup"></i> Signup
+                </a>
+            </li>
+            <li class="navigation__item"> 
+                <a href="{% url 'account_login' %}" class="navigation__link">
+                    <i class="fas fa-login"></i> Login
+                </a>
+            </li>
+            {% endif %}
+        </nav> 
+        </div>
+        <div class="nav-container">
+            <a href="/"><img src="https://res.cloudinary.com/jesmanto/image/upload/v1567521912/oslo_logo_e0y3gs.png"
+                    alt="oslo logo"></a>
+            <div class="topnav-container">
+                {% if request.user.is_authenticated %}
+                <a href="" class="nav">
+                    <span class="badge green z-depth-1 mr-1 p-2"> {{ user.username }}
+                    </span>
+                </a>
+                <a href="{% url 'order-summary' %}" class="nav-link waves-effect nav">
+                    <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+                </a>
+                <a href="{% url 'account_logout' %}" class="nav">
+                    <i class="fas fa-logout"></i> Logout
+                </a>
+                {% else %}
+                <a href="{% url 'account_login' %}" class="nav">
+                    <i class="fas fa-login"></i> Login
+                </a>
+                <a href="{% url 'account_signup' %}" class="nav">
+                    <i class="fas fa-signup"></i> Signup
+                </a>
+                {% endif %}
+                <a href="{% url 'contact' %}" class="nav">Contact Us</a>                
+                <a href="{% url 'about' %}" class="nav">About Us</a>               
+                <a href="/" class="active nav">Home</a>              
+            </div>
+        </div>
+    </div>
+
+</header>

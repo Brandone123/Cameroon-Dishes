@@ -1,0 +1,33 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+
+{% block content %}
+<div class="signup-page space">
+  <div class="form_signup">
+    <form class="register-form" method="POST" action="{% url 'account_logout' %}">
+      <a href="/" aria-hidden="true" class="close">&times;
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <!--<span aria-hidden="true">&times;</span>-->
+        </button>
+      </a>
+      <h1>{% trans "Sign Out" %}</h1>
+
+
+      <p>{% trans 'Are you sure you want to sign out?' %}</p>
+
+      <form method="post" action="{% url 'account_logout' %}">
+        {% csrf_token %}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <button type="submit" class="create_ac">{% trans 'Sign Out' %}</button>
+      </form>
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

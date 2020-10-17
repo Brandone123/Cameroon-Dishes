@@ -1,0 +1,246 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+  <div class="hero-background">
+    <div id="#home" class="bg">
+      <div class="overlay1">
+        <h1 class="hero-text">
+          <span class="message">Welcome to Oslo Diner</span>
+          <button class="" role="button">
+            <a href="#menu" class="btn-outline-warning">Browse Menu</a>
+          </button>
+          <span class="down-arrow">
+            <a href="#menu">&DoubleDownArrow;</a>
+          </span>
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="text-align: center;" class="video">
+  <iframe class="youtube" width="560" height="315" src="https://www.youtube.com/embed/hAPqHrB_FOg" frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+    alt="Introductory Video"></iframe>
+</div>
+
+<section id="menu">
+  <h1 class="menu-heading">Menu
+    <hr style="border-bottom: 5px solid;">
+  </h1>
+
+  <!--Main layout-->
+  <main>
+    <div class="container">
+
+      <!--Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-light grey lighten-3 mt-3 mb-5">
+
+        <!-- Navbar brand -->
+        <span class="navbar-brand">Dishes List:</span>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+          <!-- Links -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href='/#menu'>All
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+            {% for list in object_list %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'category-list' list.category %}#menu">{{ list.get_category_display }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+
+          <!-- Links -->
+
+         <!-- <form method="GET" action="{% url 'search' %}" class="form-inline">
+            <div class="md-form my-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" name="q" value="{request.GET.q}"
+                aria-label="Search">
+              <button class="btn btn-succes" type="submit">Search</button>
+            </div>
+          </form>
+        </div>-->
+        <!-- Collapsible content -->
+
+      </nav>
+      <!--/.Navbar-->
+
+      <!--Section: Products v.3-->
+      <section class="text-center mb-4">
+
+        <div class="row wow fadeIn">
+          {% for item in object_list %}
+          <div class="col-lg-3 col-md-6 mb-4">
+
+            <!--Card-->
+            <div class="card">
+
+              <!--Card image-->
+              <div class="view overlay">
+                <img src="{{ item.image.url }}" class="card-img-top" alt="Oslo Diner">
+                <a href="{{ item.get_absolute_url }}">
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                <a href="" class="grey-text">
+                  <h5>{{ item.get_category_display }}</h5>
+                </a>
+                <h5>
+                  <strong>
+                    <a href="{{ item.get_absolute_url }}" class="dark-grey-text">{{ item.title }}
+                      <span
+                        class="badge badge-pill {{ item.get_label_display }}-color">{{ item.get_availabily_display }}</span>
+                    </a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong>{{ item.price }}FCFA</strong>
+                </h4>
+
+              </div>
+              <!--Card content-->
+
+            </div>
+            <!--Card-->
+
+          </div>
+
+          {% endfor %}
+
+
+        </div>
+
+      </section>
+      <!--Section: Products v.3-->
+
+      <!--Pagination-->
+      {% if is_paginated %}
+      <nav class="d-flex justify-content-center wow fadeIn">
+        <ul class="pagination pg-blue">
+
+          <!--Arrow left-->
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }} " aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          {% endif %}
+
+          <li class="page-item active">
+            <a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+
+          {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }} " aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+
+    </div>
+  </main>
+</section>
+</div>
+<div class="comments">
+  <h3>Our Reviews</h3>
+  <p>Check out what other high-class customers are saying about their Oslo Diner experience:</p>
+  <hr class="shine">
+</div>
+
+<div class="container">
+  <div class="comments-container">
+    <section class="top-div">
+      <!-- <div class="div-pic">
+            <img src="https://res.cloudinary.com/faveygirl/image/upload/v1567451924/ww-blaetterteigpasteten_2905_ylsoo1.jpg" alt="blaetterteigpasteten_2905_ylsoo1" title="Skyline" />
+            </div> -->
+      <div class="div-text">
+        <h4>I loved the Cake!</h4>
+        <p>I have always been a cake lover and so finding cakes that met my taste standards is a task in itself.
+          I visited Oslo Diner and had the cake desert serving, and my oh my! I am literally addicted to the Oslo
+          Diner flavour!
+          Wow! This one blew my mind!</p>
+        <p><i>By Toussaint | August 25, 2019</i></p>
+        <hr class="stars">
+      </div>
+    </section>
+
+    <section class="top-div">
+      <!-- <div class="div-pic">
+              <img src="https://res.cloudinary.com/drwf1wdsc/image/upload/v1567506258/The_Boutique_Bed_and_Breakfast_x9qozg.jpg" alt="a Kiwi, lime, pear" title="Juicy Fruit" />
+            </div> -->
+      <div class="div-text">
+        <h4>Super Home Delivery Service</h4>
+        <p>We all know how restaurants promise high heavens for meagre services.
+          So, when I placed order for the Oslo Diner home delivery, I really wasn't expecting anything spectacular.
+          When the food came though, I couldn't hide my amazement. Not only, did the food arrive within 15minutes of
+          ordering,
+          they also got my orders accurately and the packaging was a sight to behold. I'm definitely recommending Oslo
+          Diner.
+        </p>
+        <p><i>By Brandone | Jun 28, 2019</i></p>
+        <hr class="stars">
+      </div>
+    </section>
+
+    <section class="top-div">
+      <!-- <div class="div-pic">
+            <img src="https://res.cloudinary.com/faveygirl/image/upload/v1567451198/vegetarian-diet-plan-1296x728-feature_piblwq.jpg" alt="Yellow roller coaster track" title="Roller Track" />
+            </div> -->
+      <div class="div-text">
+        <h4>Oslo Diner serves Veggies with the spice!</h4>
+        <p>If you are a vegetarian here in Cameroon, you already know the daily struggle.
+          But with Oslo Diner, my experience was pleasantly different. If you're on a veggie diet plan and you haven't
+          signed up as a registered Oslo Diner customer, believe me when I say you're missing!
+        </p>
+        <p><i>By Abdoul | july 10, 2019</i></p>
+        <hr class="stars">
+      </div>
+    </section>
+
+    <section class="top-div">
+      <!-- <div class="div-pic">
+              <img src="https://res.cloudinary.com/faveygirl/image/upload/v1567450859/african-dishes_hagw7t.jpg" alt="Oslo Diner" />
+            </div> -->
+      <div class="div-text">
+        <h4>African Flavour</h4>
+        <p>I like how the food at Oslo Diner has that homely taste and flavour that reminds me of home!</p>
+        <p><i>By Djakaye | September 2, 2019</i></p>
+        <hr class="stars">
+      </div>
+    </section>
+  </div>
+</div>
+
+<!--Main layout-->
+{% endblock content %}
+</body>
+
+</html>
