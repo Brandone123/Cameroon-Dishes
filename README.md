@@ -13,7 +13,9 @@ Steps:
 
 This project includes:
 
-1. Settings modules for deploying with Azure
+1. Settings modules for deploying with Heroku
 2. Django commands for renaming your project and creating a superuser
 3. A cli tool for setting environment variables for deployment
 4. API for payment Mobile don't work already
+
+Link of the web site: http://oslo-diner.herokuapp.com/
